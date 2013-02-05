@@ -19,7 +19,7 @@ class LoadRegionalData extends BuildTask{
 	}
 	
 	function loadSubdivisions(){
-		$loader = new CountrySubdivisionsBulkLoader("CountrySubdivison");
+		$loader = new CountrySubdivisionsBulkLoader("CountrySubdivision");
 		$loader->deleteExistingRecords = self::$delte_existing_records;
 		$results = $loader->load(self::$subdivisions_datafile);
 		echo "loaded subdivisions.";

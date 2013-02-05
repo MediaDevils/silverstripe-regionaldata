@@ -7,7 +7,7 @@ class RegionalDataAPI extends Controller{
 		if(!$country){
 			return $this->error('Country not provided');
 		}
-		$regions = CountrySubdivison::get_by_country($country);
+		$regions = CountrySubdivision::get_by_country($country);
 		if(!$regions){
 			return $this->error('There are no regions for that country');	
 		}

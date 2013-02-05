@@ -2,7 +2,7 @@
 /**
  * 2nd-level administrative region of a country, as defined by ISO 3166-2 standard
  */
-class CountrySubdivison extends DataObject{
+class CountrySubdivision extends DataObject{
 
 	static $db = array(
 		'Name' => 'Varchar',
@@ -40,7 +40,7 @@ class CountrySubdivison extends DataObject{
 		if(!($countryobj instanceof Country)){
 			return null;
 		}
-		return DataObject::get("CountrySubdivison","\"CountryID\" = ".$countryobj->ID);
+		return DataObject::get("CountrySubdivision","\"CountryID\" = ".$countryobj->ID);
 	}
 	
 }
