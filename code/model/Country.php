@@ -13,7 +13,7 @@ class Country extends DataObject{
 	);
 	
 	static $has_many = array(
-		'Subdivisions' => 'CountrySubdivison'	
+		'Subdivisions' => 'CountrySubdivision'	
 	);
 	
 	static $summary_fields = array(
