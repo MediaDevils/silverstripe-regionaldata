@@ -1,5 +1,4 @@
 <?php
-
 class CountrySubdivisionsBulkLoader extends CsvBulkLoader{
 	
 	public $columnMap = array(
