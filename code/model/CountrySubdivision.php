@@ -30,9 +30,9 @@ class CountrySubdivision extends DataObject{
 		$countryobj = null;
 		if(is_string($country)){
 			if(strlen($country) === 2){
-				$countryobj = DataObject::get_one('Country',"\"ISO1A2\"  = '$country'");
+				$countryobj = Country::get()->filter("ISO1A2", $country)->First();
 			}elseif(strlen($country) === 3){
-				$countryobj = DataObject::get_one('Country',"\"ISO1A3\"  = '$country'");
+				$countryobj = Country::get()->filter("ISO1A3", $country)->First();
 			}
 		}else{
 			$countryobj = $country;
@@ -40,7 +40,6 @@ class CountrySubdivision extends DataObject{
 		if(!($countryobj instanceof Country)){
 			return null;
 		}
-		return DataObject::get("CountrySubdivision","\"CountryID\" = ".$countryobj->ID);
+		return self::get()->filter("CountryID", $countryobj->ID);
 	}
-	
 }

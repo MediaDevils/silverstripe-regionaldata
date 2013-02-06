@@ -38,7 +38,7 @@ class Country extends DataObject{
 		if(!$code)
 			return null;
 		$field = ($alpha == 3) ? "ISO1A3" : "ISO1A2";
-		return DataObject::get_one("Country","\"$field\" = '$code'");
+		return self::get()->filter($field, $code)->First();
 	}
 	
 }
