@@ -17,4 +17,12 @@ class PostalCode extends DataObject {
 			"value" => "Code, SubdivisionID"
 		)
 	);
+	
+	public static $summary_fields = array(
+		"Subdivision.Name",
+		"Code",
+		"City",
+		"Latitude",
+		"Longitude"
+	);
 }

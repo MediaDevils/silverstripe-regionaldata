@@ -41,4 +41,10 @@ class CountrySubdivision extends DataObject {
 		}
 		return self::get()->filter("CountryID", $countryobj->ID);
 	}
+	
+	public function getShortCode() {
+		list($countryCode, $divisioncode) = explode("-", $this->ISO2);
+		
+		return $divisioncode;
+	}
 }

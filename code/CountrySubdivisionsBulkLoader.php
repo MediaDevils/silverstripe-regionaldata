@@ -4,7 +4,7 @@ class CountrySubdivisionsBulkLoader extends CsvBulkLoader{
 	public $columnMap = array(
 		"COUNTRY NAME" => "CountryName",
 		"ISO 3166-2 SUB-DIVISION/STATE CODE" => "ISO2",
-		"ISO 3166-2 SUBDIVISION/STATE NAME" => "Name",
+		"ISO 3166-2 SUBDIVISION/STATE NAME" => "->processName",
 		"ISO 3166-2 PRIMARY LEVEL NAME" => "->processType",
 		"SUBDIVISION/STATE ALTERNATE NAMES" => "AlternativeNames",
 		"ISO 3166-2 SUBDIVISION/STATE CODE (WITH *)" => "SubdivisionWithStar",
@@ -25,11 +25,15 @@ class CountrySubdivisionsBulkLoader extends CsvBulkLoader{
 		)
 	);
 	
-	function countryByISO2(&$obj, $val, $record){
+	public function countryByISO2(&$obj, $val, $record) {
 		return Country::get_by_isocode($val);
 	}
-
-	function processType(&$obj, $val, $record){
+	
+	public function processName($obj, $val, $record) {
+		$obj->Name = preg_replace('/ \([sS]ee also .*/', "", $val);
+	}
+	
+	public function processType(&$obj, $val, $record) {
 		$obj->Type = trim(ucwords($val)); //cleanup
 	}
 	
